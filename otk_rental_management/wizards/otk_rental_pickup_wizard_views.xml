@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_otk_rental_pickup_wizard_form" model="ir.ui.view">
+        <field name="name">otk.rental.pickup.wizard.form</field>
+        <field name="model">otk.rental.pickup.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Partial Equipment Pickup">
+                <sheet>
+                    <div class="alert alert-info" role="alert">
+                        <h4>
+                            <i class="fa fa-truck"/> Partial Equipment Pickup
+                        </h4>
+                        <p>
+                            Check the serials the customer is picking up today.
+                            Uncheck any to exclude them from this pickup.
+                        </p>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="project_id" readonly="1"/>
+                            <field name="pickup_date"/>
+                        </group>
+                    </group>
+                    <separator string="Serials to Pickup"/>
+                    <field name="line_ids" nolabel="1">
+                        <list editable="bottom">
+                            <field name="to_pickup" widget="boolean_toggle"/>
+                            <field name="serial_id" invisible="1"/>
+                            <field name="serial_number" readonly="1"/>
+                            <field name="equipment_id" readonly="1"/>
+                            <field name="status" widget="badge"
+                                   decoration-info="status == 'reserved'"
+                                   readonly="1"/>
+                            <field name="programming_config" optional="hide" readonly="1"/>
+                        </list>
+                    </field>
+                    <group>
+                        <group string="Customer Signature">
+                            <field name="pickup_signature"
+                                   widget="signature"
+                                   nolabel="1"
+                                   required="1"
+                                   placeholder="Draw signature here..."/>
+                            <div class="text-muted small mb-3">
+                                <i class="fa fa-info-circle"/>
+                                Click "Adopt &amp; Sign" to save, or "Clear" to restart
+                            </div>
+                        </group>
+                        <group string="Notes">
+                            <field name="notes"
+                                   nolabel="1"
+                                   placeholder="Notes about this pickup..."/>
+                        </group>
+                    </group>
+                </sheet>
+                <footer>
+                    <button string="Confirm Pickup"
+                            name="action_confirm_pickup"
+                            type="object"
+                            class="btn-primary"/>
+                    <button string="Cancel"
+                            class="btn-secondary"
+                            special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_otk_rental_pickup_wizard" model="ir.actions.act_window">
+        <field name="name">Partial Pickup</field>
+        <field name="res_model">otk.rental.pickup.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="model_otk_rental_project"/>
+    </record>
+</odoo>
