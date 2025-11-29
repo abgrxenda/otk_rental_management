@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'OTEK Rental Management with QR Code Scanner',
-    'version': '18.0.1.0.0',
+    'version': '18.0.1.0.1',
     'category': 'Services/Rental',
     'summary': 'Complete OTEK Rental Management system with QR code generation and mobile scanning',
     'description': """
@@ -121,10 +121,29 @@ Requirements:
     'images': [
         'static/description/icon.png',
         'static/description/index.html',
+        # 👇 Add 3–5 high-quality screenshots (required!)
+        'static/description/screenshot_1.png',
+        'static/description/screenshot_2.png',
+        'static/description/screenshot_3.png',
+        'static/description/screenshot_4.png',
+        'static/description/screenshot_5.png',
+        'static/description/screenshot_6.png',
+        'static/description/screenshot_7.png',
+        'static/description/screenshot_8.png',
+        'static/description/screenshot_9.png',
+        'static/description/screenshot_10.png',
     ],
+
+    # 💰 MONETIZATION — ADD THESE LINES
+    'price': 149.00,           # ← Set your price (float)
+    'currency': 'USD',         # ← 'USD' or 'EUR' only
     'installable': True,
     'application': True,
     'auto_install': False,
     'sequence': 10,
     'post_init_hook': 'post_init_hook',
+
+    # 🔔 HIGHLY RECOMMENDED: Add support & versioning info
+    'support': 'support@omertek.com',
+    'maintainer': 'ÖMER TEKNOLOJİ',
 }

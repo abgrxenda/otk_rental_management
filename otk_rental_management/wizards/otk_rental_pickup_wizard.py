@@ -47,7 +47,7 @@ class OtkRentalPickupWizard(models.TransientModel):
             for serial in reserved_serials:
                 lines.append((0, 0, {
                     'serial_id': serial.id,
-                    'equipment_id': serial.equipment_id.id,
+                    # 'equipment_id': serial.equipment_id.id,
                     'to_pickup': True,  # default checked
                 }))
             res['line_ids'] = lines
@@ -138,12 +138,21 @@ class OtkRentalPickupWizardLine(models.TransientModel):
         'Serial Number',
         required=True
     )
+    # ✅ FIXED - Make it a related field OR remove required
+    # Option 1: Related field (RECOMMENDED)
     equipment_id = fields.Many2one(
-        'otk.rental.equipment',
+        'rental.equipment',
         'Equipment',
-        required=True,  # Add this
-        store=True      # Add this
+        related='serial_id.equipment_id',  # Get it from serial
+        readonly=True,
+        store=True  # Store for searching/filtering
     )
+    # equipment_id = fields.Many2one(
+    #     'otk.rental.equipment',
+    #     'Equipment',
+    #     required=True,  # Add this
+    #     store=True      # Add this
+    # )
     
     to_pickup = fields.Boolean('Pick Up', default=True)
     serial_number = fields.Char(related='serial_id.serial_number', string='Serial', readonly=True)
