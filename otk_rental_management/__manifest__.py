@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'OTEK Rental Management with QR Code Scanner',
-    'version': '18.0.1.0.2',
+    'version': '18.0.1.0.3',
     'category': 'Services/Rental',
     'summary': 'Complete OTEK Rental Management system with QR code generation and mobile scanning',
     'description': """
