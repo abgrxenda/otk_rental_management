@@ -44,8 +44,9 @@ Requirements:
 * Mobile device with camera for scanning
     """,
     'author': 'ÖMER KADİR | ÖMER TEKNOLOJİ',
-    'website': 'https://omertek.com',
+    'website': 'https://omertek.com/',
     'license': 'LGPL-3',
+    'versions': '18.0',
     'depends': [
         'base',
         'web',
