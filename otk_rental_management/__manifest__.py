@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'OTEK Rental Management with QR Code Scanner',
-    'version': '18.0.1.0.1',
+    'version': '18.0.1.0.3',
     'category': 'Services/Rental',
     'summary': 'Complete OTEK Rental Management system with QR code generation and mobile scanning',
     'description': """
@@ -135,8 +135,8 @@ Requirements:
     ],
 
     # 💰 MONETIZATION — ADD THESE LINES
-    'price': 149.00,           # ← Set your price (float)
-    'currency': 'USD',         # ← 'USD' or 'EUR' only
+    # 'price': 149.00,           # ← Set your price (float)
+    # 'currency': 'USD',         # ← 'USD' or 'EUR' only
     'installable': True,
     'application': True,
     'auto_install': False,
