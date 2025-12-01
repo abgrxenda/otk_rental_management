@@ -120,6 +120,7 @@ Requirements:
     },
     'demo': [],
     'images': [
+        'static/description/otkrentalmanagement.jpg',
         'static/description/icon.png',
         'static/description/index.html',
         # 👇 Add 3–5 high-quality screenshots (required!)
