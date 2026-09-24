@@ -101,21 +101,21 @@ Requirements:
     'assets': {
         'web.assets_backend': [
             # CSS
-            # 'rental_management/static/src/css/qr_scanner.css',
-            # 'rental_management/static/src/css/signature_pad.css',  # ADD THIS
+            # 'otk_rental_management/static/src/css/qr_scanner.css',
+            # 'otk_rental_management/static/src/css/signature_pad.css',  # ADD THIS
             # JavaScript Libraries
             'otk_rental_management/static/lib/jsQR/jsQR.js',
 
             # JavaScript Components
-            # 'rental_management/static/src/js/qr_scanner.js',
-            # 'rental_management/static/src/xml/qr_scanner_template.xml',
-            # 'rental_management/static/src/js/signature_pad_widget.js',  # ADD THIS
+            # 'otk_rental_management/static/src/js/qr_scanner.js',
+            # 'otk_rental_management/static/src/xml/qr_scanner_template.xml',
+            # 'otk_rental_management/static/src/js/signature_pad_widget.js',  # ADD THIS
 
             # XML Templates
-            # 'rental_management/static/src/xml/signature_pad_widget.xml',  # ADD THIS
+            # 'otk_rental_management/static/src/xml/signature_pad_widget.xml',  # ADD THIS
         ],
         # 'web.assets_frontend': [
-        #     'rental_management/static/src/css/qr_scanner.css',
+        #     'otk_rental_management/static/src/css/qr_scanner.css',
         # ],
     },
     'demo': [],

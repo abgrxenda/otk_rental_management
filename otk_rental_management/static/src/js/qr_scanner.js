@@ -57,7 +57,7 @@ export class RentalQRScanner extends Component {
         if (typeof jsQR === 'undefined') {
             return new Promise((resolve, reject) => {
                 const script = document.createElement('script');
-                script.src = '/rental_management/static/lib/jsQR/jsQR.js';
+                script.src = '/otk_rental_management/static/lib/jsQR/jsQR.js';
                 script.onload = resolve;
                 script.onerror = reject;
                 document.head.appendChild(script);

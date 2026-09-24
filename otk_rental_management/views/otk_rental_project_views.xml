@@ -541,15 +541,15 @@
     <!-- <record id="view_rental_project_form_qr_button" model="ir.ui.view">
         <field name="name">otk.rental.project.form.qr.button</field>
         <field name="model">otk.rental.project</field>
-        <field name="inherit_id" ref="rental_management.view_rental_project_form"/>
+        <field name="inherit_id" ref="otk_rental_management.view_rental_project_form"/>
         <field name="arch" type="xml">
             <xpath expr="//header" position="inside">
-                <button name="%(rental_management.action_rental_qr_scanner)d" 
+                <button name="%(otk_rental_management.action_rental_qr_scanner)d" 
                         string="Scan Item" 
                         type="action" 
                         class="btn-primary"
                         context="{'default_scan_type': 'add_to_project', 'default_project_id': id}"
-                        groups="rental_management.group_rental_user"/>
+                        groups="otk_rental_management.group_rental_user"/>
             </xpath>
         </field>
     </record> -->

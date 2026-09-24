@@ -59,7 +59,7 @@ pip install qrcode[pil] Pillow
 1. Download or clone this repository to your Odoo addons directory:
 ```bash
 cd /path/to/odoo/addons
-git clone https://github.com/abgrxenda/rental_management.git
+git clone https://github.com/abgrxenda/otk_rental_management.git
 ```
 
 2. Update Odoo apps list:
@@ -171,7 +171,7 @@ Navigate to: **Rental → Configuration → Settings**
 
 ## 🗂️ Module Structure
 ```
-rental_management/
+otk_rental_management/
 ├── models/
 │   ├── rental_equipment.py          # Equipment/items
 │   ├── rental_equipment_category.py # Categories
@@ -295,7 +295,7 @@ This project is licensed under the LGPL-3 License - see the [LICENSE](LICENSE) f
 ## 📧 Support
 
 For support, please:
-1. Check the [Issues](https://github.com/abgrxenda/rental_management/issues) page
+1. Check the [Issues](https://github.com/abgrxenda/otk_rental_management/issues) page
 2. Create a new issue with detailed information
 3. Contact: [odoo@otek.today]
 
