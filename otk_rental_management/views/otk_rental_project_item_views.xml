@@ -92,7 +92,7 @@
                 <filter string="Without Serials" name="without_serials" 
                         domain="[('equipment_has_serials', '=', False)]"/>
                 
-                <group expand="0" string="Group By">
+                <group>
                     <filter string="Project" name="group_project" 
                             context="{'group_by': 'project_id'}"/>
                     <filter string="Equipment" name="group_equipment" 
@@ -170,7 +170,7 @@
                                 placeholder="Draw signature here..."/>
                             
                             <div class="text-muted small mb-3">
-                                <i class="fa fa-info-circle"/> 
+                                <i class="fa fa-info-circle" title="Info"/>
                                 Click "Adopt &amp; Sign" to save your signature, or "Clear" to start over
                             </div>
                         </group>
@@ -218,7 +218,7 @@
                 <filter string="This Month" name="this_month" 
                         domain="[('create_date', '&gt;=', (context_today() - relativedelta(day=1)).strftime('%Y-%m-%d'))]"/>
                 
-                <group expand="0" string="Group By">
+                <group>
                     <filter string="Project" name="group_project" 
                             context="{'group_by': 'project_id'}"/>
                     <filter string="Equipment" name="group_equipment" 

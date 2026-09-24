@@ -32,7 +32,7 @@
                     </group>
                     
                     <div class="alert alert-info mt-3" role="alert">
-                        <i class="fa fa-info-circle"/> 
+                        <i class="fa fa-info-circle" title="Info"/> 
                         <strong>Note:</strong> Serial numbers will be created with 'Available' status. 
                         Duplicates will be automatically skipped.
                     </div>

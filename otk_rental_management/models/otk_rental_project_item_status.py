@@ -114,12 +114,13 @@ class OtkRentalProjectItemStatus(models.Model):
     
     create_date = fields.Datetime('Date', readonly=True, index=True)
     
-    @api.model
-    def create(self, vals):
+    @api.model_create_multi
+    def create(self, vals_list):
         """Auto-set user on creation"""
-        if 'user_id' not in vals:
-            vals['user_id'] = self.env.user.id
-        return super().create(vals)
+        for vals in vals_list:
+            if 'user_id' not in vals:
+                vals['user_id'] = self.env.user.id
+        return super().create(vals_list)
     
     def _compute_display_name(self):
         """Custom display name"""

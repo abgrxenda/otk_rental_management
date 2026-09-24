@@ -184,7 +184,7 @@
                         domain="[('has_serials', '=', True)]"/>
                 <filter string="Without Serials" name="without_serials"
                         domain="[('has_serials', '=', False)]"/>
-                <group expand="0" string="Group By">
+                <group>
                     <filter string="Category" name="group_category"
                             context="{'group_by': 'category_ids'}"/>
                     <filter string="Has Serials" name="group_serials"

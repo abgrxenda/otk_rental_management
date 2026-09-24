@@ -84,7 +84,7 @@
                 <filter string="Repair" name="repair"
                         domain="[('scan_type', '=', 'repair')]"/>
                 
-                <group expand="0" string="Group By">
+                <group>
                     <filter name="group_scan_type" string="Scan Type" 
                             context="{'group_by': 'scan_type'}"/>
                     <filter name="group_user" string="User" 

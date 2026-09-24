@@ -93,7 +93,7 @@
                 <filter string="Today" name="today"
                         domain="[('sign_datetime', '&gt;=', context_today().strftime('%Y-%m-%d 00:00:00'))]"/>
                 
-                <group expand="0" string="Group By">
+                <group>
                     <filter string="Project" name="group_project" 
                             context="{'group_by': 'project_id'}"/>
                     <filter string="Type" name="group_type" 

@@ -252,11 +252,12 @@ class OtkRentalProject(models.Model):
             project.signature_count = len(project.signature_ids)
 
     # CRUD and Sequencing
-    @api.model
-    def create(self, vals):
-        if vals.get('name', 'New') == 'New':
-            vals['name'] = self.env['ir.sequence'].next_by_code('otk.rental.project') or 'RENT/NEW'
-        return super().create(vals)
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            if vals.get('name', 'New') == 'New':
+                vals['name'] = self.env['ir.sequence'].next_by_code('otk.rental.project') or 'RENT/NEW'
+        return super().create(vals_list)
 
     # Constraints
     @api.constrains('start_date', 'end_date')

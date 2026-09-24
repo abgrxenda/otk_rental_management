@@ -203,7 +203,7 @@
                     <group>
                         <div invisible="use_qr_logo == False">
                             <p class="text-muted">
-                                <i class="fa fa-info-circle"/>
+                                <i class="fa fa-info-circle" title="Info"/>
                                 The logo will be displayed in the center of all QR codes generated for rental items.
                                 <br/>
                                 Recommended: 200x200px PNG with transparent background.

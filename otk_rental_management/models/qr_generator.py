@@ -3,7 +3,7 @@
 # Replicates the PHP design: circular dots, rounded position markers, and logo overlay
 # """
 # Error
-# Failed to regenerate QR code(s). Check server logs. Failed to generate QR code for EQ-0001-0002: module 'odoo.addons.rental_management.models.qr_generator' has no attribute 'generate_qr_code
+# Failed to regenerate QR code(s). Check server logs. Failed to generate QR code for EQ-0001-0002: module 'odoo.addons.otk_rental_management.models.qr_generator' has no attribute 'generate_qr_code
 
 import qrcode
 from PIL import Image, ImageDraw

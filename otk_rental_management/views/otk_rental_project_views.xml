@@ -253,9 +253,9 @@
 
                         <page string="Signatures" name="signatures" invisible="state in ['draft','cancelled', 'invoiced']">
                             <!-- Signature Count Summary -->
-                            <div class="alert alert-info mb-3">
+                            <div class="alert alert-info mb-3" role="status">
                                 <strong>
-                                    <i class="fa fa-pencil"/> 
+                                    <i class="fa fa-pencil" title="Signatures"/>
                                     Signatures Collected: <field name="signature_count" readonly="1"/>
                                 </strong>
                             </div>
@@ -368,7 +368,7 @@
                                             <field name="name"/>
                                         </strong>
                                         <div class="o_kanban_record_subtitle text-muted">
-                                            <i class="fa fa-user"/> <field name="partner_id"/>
+                                            <i class="fa fa-user" title="Customer"/> <field name="partner_id"/>
                                         </div>
                                     </div>
                                     <div class="o_kanban_record_top_right">
@@ -392,23 +392,23 @@
                                     </div>
                                     
                                     <!-- Overdue Warning -->
-                                    <div t-if="record.is_overdue.raw_value and record.state.raw_value === 'ongoing'" 
-                                         class="alert alert-danger mt-2 mb-0 py-1 px-2">
-                                        <i class="fa fa-exclamation-triangle"/> 
+                                    <div t-if="record.is_overdue.raw_value and record.state.raw_value === 'ongoing'"
+                                         class="alert alert-danger mt-2 mb-0 py-1 px-2" role="alert">
+                                        <i class="fa fa-exclamation-triangle" title="Overdue"/>
                                         <strong>Overdue: <field name="days_overdue"/> days</strong>
                                     </div>
 
                                     <!-- NEW: Damage Warning -->
-                                    <div t-if="record.has_damage.raw_value" 
-                                         class="alert alert-warning mt-2 mb-0 py-1 px-2">
-                                        <i class="fa fa-wrench"/> 
+                                    <div t-if="record.has_damage.raw_value"
+                                         class="alert alert-warning mt-2 mb-0 py-1 px-2" role="alert">
+                                        <i class="fa fa-wrench" title="Damage"/>
                                         <strong>Has Damage: $<field name="damage_fee"/></strong>
                                     </div>
-                                    
+
                                     <!-- Duration -->
                                     <div class="mt-2">
                                         <span class="badge badge-pill badge-info">
-                                            <i class="fa fa-clock-o"/> <field name="duration_days"/> days
+                                            <i class="fa fa-clock-o" title="Duration"/> <field name="duration_days"/> days
                                         </span>
                                     </div>
                                 </div>
@@ -480,7 +480,7 @@
                         domain="[('start_date', '&gt;=', (context_today() - relativedelta(day=1)).strftime('%Y-%m-%d')),
                                  ('start_date', '&lt;=', (context_today() + relativedelta(day=31)).strftime('%Y-%m-%d'))]"/>
                 
-                <group expand="0" string="Group By">
+                <group>
                     <filter string="Customer" name="group_customer" 
                             context="{'group_by': 'partner_id'}"/>
                     <filter string="Status" name="group_status" 
@@ -541,15 +541,15 @@
     <!-- <record id="view_rental_project_form_qr_button" model="ir.ui.view">
         <field name="name">otk.rental.project.form.qr.button</field>
         <field name="model">otk.rental.project</field>
-        <field name="inherit_id" ref="rental_management.view_rental_project_form"/>
+        <field name="inherit_id" ref="otk_rental_management.view_rental_project_form"/>
         <field name="arch" type="xml">
             <xpath expr="//header" position="inside">
-                <button name="%(rental_management.action_rental_qr_scanner)d" 
+                <button name="%(otk_rental_management.action_rental_qr_scanner)d" 
                         string="Scan Item" 
                         type="action" 
                         class="btn-primary"
                         context="{'default_scan_type': 'add_to_project', 'default_project_id': id}"
-                        groups="rental_management.group_rental_user"/>
+                        groups="otk_rental_management.group_rental_user"/>
             </xpath>
         </field>
     </record> -->

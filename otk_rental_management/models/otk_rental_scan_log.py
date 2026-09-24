@@ -105,4 +105,4 @@ class OtkRentalScanLog(models.Model):
         """Custom display name"""
         for record in self:
             scan_type_label = dict(self._fields['scan_type'].selection).get(record.scan_type, record.scan_type)
-            record.display_name = f"{record.serial_number_id.display_name} - {scan_type_label}"
+            record.display_name = f"{record.serial_number_id.name} - {scan_type_label}"

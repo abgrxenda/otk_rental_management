@@ -138,12 +138,13 @@ class OtkRentalEquipment(models.Model):
             if not any([equipment.daily_rate, equipment.weekly_rate, equipment.monthly_rate]):
                 raise ValidationError(_('Please set at least one rental rate (Daily, Weekly, or Monthly).'))
     
-    @api.model
-    def create(self, vals):
+    @api.model_create_multi
+    def create(self, vals_list):
         """Generate code if not provided"""
-        if not vals.get('code'):
-            vals['code'] = self.env['ir.sequence'].next_by_code('otk.rental.equipment') or 'EQ-NEW'
-        return super().create(vals)
+        for vals in vals_list:
+            if not vals.get('code'):
+                vals['code'] = self.env['ir.sequence'].next_by_code('otk.rental.equipment') or 'EQ-NEW'
+        return super().create(vals_list)
     
     def action_view_serials(self):
         """Open serials list for this equipment"""

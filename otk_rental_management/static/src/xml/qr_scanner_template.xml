@@ -124,8 +124,8 @@
     <t t-name="otk_rental_management.qr_scanner_template">
         <t t-call="web.layout">
             <t t-set="head">
-                <script type="text/javascript" src="/rental_management/static/lib/jsQR/jsQR.js"/>
-                <link rel="stylesheet" href="/rental_management/static/src/css/qr_scanner.css"/>
+                <script type="text/javascript" src="/otk_rental_management/static/lib/jsQR/jsQR.js"/>
+                <link rel="stylesheet" href="/otk_rental_management/static/src/css/qr_scanner.css"/>
             </t>
             <div class="container-fluid mt-3">
                 <div class="row">

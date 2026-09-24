@@ -317,7 +317,7 @@ class OtkRentalEquipmentSerial(models.Model):
                 record._generate_qr_code()
 
         return records
-
+    
     def write(self, vals):
         """Track status changes, and regenerate QR code if serial number changes"""
         # If status changed, log it in history (before the write, so we still
@@ -340,7 +340,7 @@ class OtkRentalEquipmentSerial(models.Model):
             for record in self:
                 if record.serial_number:
                     record._generate_qr_code()
-        
+
         return result
     
     def _generate_qr_code(self):

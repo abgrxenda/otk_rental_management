@@ -8,7 +8,7 @@
                 <sheet>
                     <div class="alert alert-info" role="alert">
                         <h4>
-                            <i class="fa fa-truck"/> Partial Equipment Pickup
+                            <i class="fa fa-truck" title="Pickup"/> Partial Equipment Pickup
                         </h4>
                         <p>
                             Check the serials the customer is picking up today.
@@ -42,7 +42,7 @@
                                    required="1"
                                    placeholder="Draw signature here..."/>
                             <div class="text-muted small mb-3">
-                                <i class="fa fa-info-circle"/>
+                                <i class="fa fa-info-circle" title="Info"/>
                                 Click "Adopt &amp; Sign" to save, or "Clear" to restart
                             </div>
                         </group>

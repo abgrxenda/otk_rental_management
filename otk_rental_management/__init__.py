@@ -96,7 +96,7 @@ def post_init_hook(env):
         SerialNumber = env['otk.rental.equipment.serial']
         serials_without_qr = SerialNumber.search([
             ('qr_code', '=', False),
-            ('serial_number', '!=', False)
+            ('name', '!=', False)
         ])
         
         total = len(serials_without_qr)
@@ -126,7 +126,7 @@ def post_init_hook(env):
                         
                 except Exception as e:
                     failed += 1
-                    _logger.error(f"  ❌ Failed to generate QR for {serial.serial_number}: {str(e)}")
+                    _logger.error(f"  ❌ Failed to generate QR for {serial.name}: {str(e)}")
             
             # Commit after each batch
             env.cr.commit()

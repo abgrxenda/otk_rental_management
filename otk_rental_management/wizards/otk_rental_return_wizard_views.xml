@@ -10,7 +10,7 @@
                 <sheet>
                     <div class="alert alert-info" role="alert">
                         <h4>
-                            <i class="fa fa-info-circle"/> Return Equipment Assessment
+                            <i class="fa fa-info-circle" title="Info"/> Return Equipment Assessment
                         </h4>
                         <p>
                             Please inspect each item and record its condition.

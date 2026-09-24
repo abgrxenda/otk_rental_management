@@ -10,7 +10,7 @@
                 <sheet>
                     <div class="alert alert-warning" role="alert">
                         <h4>
-                            <i class="fa fa-warning"/> Warning: Permanent Deletion
+                            <i class="fa fa-warning" title="Warning"/> Warning: Permanent Deletion
                         </h4>
                         <p>
                             You are about to permanently delete this serial number. 
@@ -30,7 +30,7 @@
                     </group>
                     
                     <div class="alert alert-info mt-3" role="alert">
-                        <i class="fa fa-info-circle"/> 
+                        <i class="fa fa-info-circle" title="Info"/> 
                         <strong>Note:</strong> Only unused serial numbers can be deleted. 
                         Serials with history will be archived instead of deleted.
                     </div>

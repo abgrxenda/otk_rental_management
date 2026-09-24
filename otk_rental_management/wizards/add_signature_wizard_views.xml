@@ -9,7 +9,7 @@
             <form string="Add Signature">
                 <sheet>
                     <div class="alert alert-info" role="alert">
-                        <h4><i class="fa fa-pencil"/> Capture Signature</h4>
+                        <h4><i class="fa fa-pencil" title="Signature"/> Capture Signature</h4>
                         <p>Draw the signature using your mouse or stylus device in the signature box below.</p>
                     </div>
                     
@@ -33,7 +33,7 @@
                            placeholder="Draw signature here..."/>
                     
                     <div class="text-muted small mb-3">
-                        <i class="fa fa-info-circle"/> 
+                        <i class="fa fa-info-circle" title="Info"/> 
                         Click "Adopt &amp; Sign" to save your signature, or "Clear" to start over
                     </div>
                     

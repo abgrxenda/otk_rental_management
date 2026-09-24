@@ -10,7 +10,7 @@
                 <sheet>
                     <div class="alert alert-info" role="alert">
                         <h4>
-                            <i class="fa fa-info-circle"/> Select Serial Numbers
+                            <i class="fa fa-info-circle" title="Info"/> Select Serial Numbers
                         </h4>
                         <p>
                             Choose which specific serial numbers to assign to this rental item.
@@ -36,7 +36,7 @@
                     <field name="warning_message" 
                            readonly="1" 
                            invisible="not warning_message"
-                           class="alert alert-warning mt-3"
+                           class="alert alert-warning mt-3" role="alert"
                            widget="text"/>
                     
                     <!-- Serial Selection -->

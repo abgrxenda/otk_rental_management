@@ -225,7 +225,7 @@
                 <filter string="Disposed" name="disposed" 
                         domain="[('status', '=', 'disposed')]"/>
                 
-                <group expand="0" string="Group By">
+                <group>
                     <filter string="Equipment" name="group_equipment" 
                             context="{'group_by': 'equipment_id'}"/>
                     <filter string="Status" name="group_status" 
