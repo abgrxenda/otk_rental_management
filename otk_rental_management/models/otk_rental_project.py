@@ -481,7 +481,7 @@ class OtkRentalProject(models.Model):
             # Build descriptive name
             serial_list = ", ".join(serials[:3]) + ("..." if len(serials) > 3 else "")
             date_range = f"{p_date.strftime('%d/%m/%Y')} → {r_date.strftime('%d/%m/%Y')}"
-            name = f"{equipment.name} — Serials: {serial_list} ({date_range}) ×{qty} × {days} days × {rate}/day"
+            name = f"{equipment.name} - Serials: {serial_list} ({date_range}) ×{qty} × {days} days × {rate}/day"
 
             lines.append((0, 0, {
                 'name': name,
