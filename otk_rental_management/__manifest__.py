@@ -136,7 +136,7 @@ Requirements:
         'static/description/screenshot_10.png',
     ],
 
-    # 💰 MONETIZATION — ADD THESE LINES
+    # 💰 MONETIZATION - ADD THESE LINES
     # 'price': 149.00,           # ← Set your price (float)
     # 'currency': 'USD',         # ← 'USD' or 'EUR' only
     'installable': True,

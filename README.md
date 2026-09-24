@@ -9,7 +9,7 @@ A comprehensive rental management module for Odoo 19 with QR code generation, di
 
 ## 🎯 Overview
 
-This module turns Odoo 19 into a full rental management system, suitable for businesses renting out equipment, tools, vehicles, electronics, or any physical assets. Every step — from reservation to return and invoicing — is tracked with serial-level precision, QR codes, and photo/signature capture.
+This module turns Odoo 19 into a full rental management system, suitable for businesses renting out equipment, tools, vehicles, electronics, or any physical assets. Every step - from reservation to return and invoicing - is tracked with serial-level precision, QR codes, and photo/signature capture.
 
 ## ✨ Key Features
 
@@ -48,10 +48,10 @@ This module turns Odoo 19 into a full rental management system, suitable for bus
 
 ### 🌐 REST API
 Public, API-key-authenticated endpoints for integrating external systems (kiosks, self-service terminals, third-party apps):
-- `GET /api/rental/serial/<serial_number>` — look up a serial's current status
-- `POST /api/rental/serial/rent` / `POST /api/rental/serial/return` — quick rent/return
-- `GET /api/rental/equipment/list`, `GET /api/rental/equipment/<id>` — equipment catalog
-- `GET /api/rental/project/list`, `POST /api/rental/project/create` — project listing and creation
+- `GET /api/rental/serial/<serial_number>` - look up a serial's current status
+- `POST /api/rental/serial/rent` / `POST /api/rental/serial/return` - quick rent/return
+- `GET /api/rental/equipment/list`, `GET /api/rental/equipment/<id>` - equipment catalog
+- `GET /api/rental/project/list`, `POST /api/rental/project/create` - project listing and creation
 
 ## 🚀 Installation
 
