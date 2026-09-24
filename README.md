@@ -1,74 +1,70 @@
-# Rental Management System for Odoo 18
+# OTEK Rental Management for Odoo 19
 
-A comprehensive rental management module for Odoo 18 with advanced QR code integration, mobile scanning capabilities, and complete rental lifecycle tracking.
+A comprehensive rental management module for Odoo 19 with QR code generation, digital signatures, and complete rental lifecycle tracking. Mobile web-based QR scanning is in progress (see Known Issues).
 
-![Odoo Version](https://img.shields.io/badge/Odoo-18.0-blue)
+![Odoo Version](https://img.shields.io/badge/Odoo-19.0-blue)
 ![Python](https://img.shields.io/badge/Python-3-yellow?logo=python&logoColor=white)
 ![License](https://img.shields.io/badge/license-LGPL--3-green)
-![Status](https://img.shields.io/badge/status-production%20ready-brightgreen)
+![Status](https://img.shields.io/badge/status-in%20development-yellow)
 
 ## 🎯 Overview
 
-This module transforms Odoo 18 into a powerful rental management system, perfect for businesses that rent out equipment, tools, vehicles, electronics, or any physical assets. From reservation to return, every step is tracked with precision.
+This module turns Odoo 19 into a full rental management system, suitable for businesses renting out equipment, tools, vehicles, electronics, or any physical assets. Every step — from reservation to return and invoicing — is tracked with serial-level precision, QR codes, and photo/signature capture.
 
 ## ✨ Key Features
 
 ### 📦 Equipment Management
 - **Hierarchical Categories** - Organize equipment with unlimited category depth
-- **Serial Number Tracking** - Track individual items with unique serial numbers
-- **Auto-generation** - Bulk generate serial numbers with customizable prefixes
-- **Stock Management** - Real-time availability tracking (available, reserved, rented, damaged)
+- **Serial Number Tracking** - Track individual units with unique, auto-generated serial numbers
+- **Stock Management** - Real-time availability (available, reserved, rented, damaged, disposed)
 - **Multi-rate Pricing** - Daily, weekly, and monthly rental rates
 
 ### 📋 Project Management
-- **Complete Lifecycle** - Draft → Reserved → Ongoing → Returned → Invoiced
-- **Visual Kanban Board** - Drag-and-drop projects between status columns
-- **Smart Serial Assignment** - Auto-assign or manually select specific serials
-- **Date Tracking** - Start date, end date, actual return date
-- **Late Fee Calculation** - Automatic calculation based on overdue days
-- **Damage Assessment** - Built-in return wizard with condition tracking
+- **Complete Lifecycle** - Draft → Reserved → Ongoing → Returned → Invoiced (with Cancelled at any stage)
+- **Kanban Board** - Visual overview with overdue and damage indicators
+- **Serial Assignment** - Auto-assign or manually select specific serials per line item
+- **Partial Pickup/Return** - Hand over or return a subset of a project's items without closing the whole project
+- **Late Fee Calculation** - Automatic, based on a fixed daily rate, a percentage of the rental amount, or whichever is greater
+- **Damage Assessment** - Built-in return wizard with severity classification and repair-cost estimates
+- **Digital Signatures** - Capture customer signatures for pickup, return, partial pickup/return, and damage acknowledgment
 
 ### 🔍 QR Code Integration
-- **Auto-generation** - QR codes generated automatically for each serial number
-- **Custom Design** - Professional QR codes (300x300px, high error correction)
-- **Printable Labels** - Single 4x6" labels or batch printing (9 per A4 page)
-- **Download & Print** - Export QR codes as PNG or print formatted labels
+- **Auto-generation** - QR codes generated automatically for each serial number, regenerated if the serial number changes
+- **Company-branded Design** - Circular dots, rounded position markers, optional logo overlay, high error correction, 1080x1080px output
+- **Printable Labels** - Single label or batch label sheets for printing
+- **Mobile Web Scanner** *(in progress, not yet functional)* - Camera-based scanning directly in the browser (jsQR), no native app required; scaffolding and context-aware routing (add to project, handover, return, report damage, send to repair, verify) are in place but the feature is not complete
 
 ### 📊 Tracking & Reporting
-- **Status History** - Complete audit trail for every serial number
-- **Damage Tracking** - Record damage severity, description, and repair costs
-- **Activity Logging** - Full chatter integration for communication
-- **Financial Reports** - Track rental revenue, damage fees, late fees
+- **Status History** - Full audit trail per serial number, including who changed what and when
+- **Scan Log** - Every QR scan is recorded with type, user, and outcome
+- **Chatter Integration** - Activity tracking, followers, and messages on equipment and projects
 
 ### 💰 Financial Features
-- **Automatic Invoicing** - Generate invoices from completed rentals
-- **Late Fees** - Configurable daily rate or percentage-based
-- **Damage Fees** - Track repair costs with auto-classification (minor/moderate/severe)
-- **Discounts** - Apply discounts to projects
-- **Payment Status** - Track unpaid, partially paid, and paid rentals
+- **Automatic Invoicing** - Generate an invoice directly from a completed rental project
+- **Late Fees** - Configurable daily rate and/or percentage-based, whichever yields the higher fee
+- **Damage Fees** - Configurable minor/moderate severity thresholds, tracked per status-history entry
+- **Discounts** - Apply a discount to the project total
+- **Payment Status** - Unpaid, partially paid, or paid
+
+### 🌐 REST API
+Public, API-key-authenticated endpoints for integrating external systems (kiosks, self-service terminals, third-party apps):
+- `GET /api/rental/serial/<serial_number>` — look up a serial's current status
+- `POST /api/rental/serial/rent` / `POST /api/rental/serial/return` — quick rent/return
+- `GET /api/rental/equipment/list`, `GET /api/rental/equipment/<id>` — equipment catalog
+- `GET /api/rental/project/list`, `POST /api/rental/project/create` — project listing and creation
 
 ## 🚀 Installation
 
 ### Prerequisites
 ```bash
-# Install Python dependencies
+# Python dependencies (installed automatically on first module install if missing)
 pip install qrcode[pil] Pillow
 ```
 
-### Install Module
-1. Download or clone this repository to your Odoo addons directory:
-```bash
-cd /path/to/odoo/addons
-git clone https://github.com/abgrxenda/rental_management.git
-```
-
-2. Update Odoo apps list:
-   - Go to **Apps** menu
-   - Click **Update Apps List**
-   - Search for "Rental Management"
-
-3. Install the module:
-   - Click **Install**
+### Install
+1. Copy this module into your Odoo 19 addons path (or install directly from the Odoo Apps Store once published).
+2. Go to **Apps** → **Update Apps List**.
+3. Search for "OTEK Rental Management" and click **Install**.
 
 ## 📖 Usage Guide
 
@@ -77,201 +73,135 @@ git clone https://github.com/abgrxenda/rental_management.git
 #### 1. Setup Equipment
 ```
 Equipment Menu → Create Equipment
-- Set name, code, and category
-- Enable "Track Serial Numbers"
-- Set rental rates (daily/weekly/monthly)
-- Click "Generate Serials" to bulk create serial numbers
+- Set name, category, and rental rates (daily/weekly/monthly)
+- Enable "Track Serial Numbers" and "Auto-generate Serials" if desired
+- Use the "Generate Serials" wizard to bulk-create serial numbers
 ```
 
 #### 2. Create Rental Project
 ```
 Projects Menu → Create Project
-- Select customer
-- Set start and end dates
-- Add equipment items
-- Set quantity → Serials auto-assign
+- Select customer, start and end dates
+- Add equipment items; serials auto-assign or select manually
 - Save as Draft
 ```
 
-#### 3. Reserve Equipment
+#### 3. Reserve → Start → Return
 ```
-Project Form → Click "Reserve Equipment"
-- Serials are reserved and marked as unavailable
-- Status changes to "Reserved"
-```
-
-#### 4. Start Rental
-```
-Project Form → Click "Start Rental"
-- Equipment is now rented out
-- Status changes to "Ongoing"
-- Late fees start calculating after end date
+Project Form → "Reserve Equipment" → "Start Rental" → "Complete Return"
+- Or use "Partial Pickup" / "Partial Return" for split handovers
+- Assess condition on return; damage fees auto-populate based on severity
+- Capture customer signature and photos at pickup/return
 ```
 
-#### 5. Return Equipment
+#### 4. Invoice
 ```
-Project Form → Click "Return Equipment"
-- Assess condition for each serial (Good/Minor Damage/Damaged/Lost)
-- Damage fees auto-populate based on condition
-- Add photos and customer signature
-- Click "Complete Return"
-- Serials return to available status or marked for repair
-```
-
-#### 6. Create Invoice
-```
-Project Form → Click "Create Invoice"
+Project Form → "Create Invoice"
 - Invoice includes rental fees, late fees, and damage fees
 - Status changes to "Invoiced"
 ```
 
-### Advanced Features
-
-#### Kanban Board Management
-- **Drag & Drop** - Move projects between status columns
-- **Visual Indicators** - Overdue warnings, damage alerts
-- **Quick Actions** - Click cards for details
-
-#### Serial Number Management
-- **Smart Delete** - Protects serials with history from deletion
-- **Bulk Operations** - Select multiple serials for batch actions
-- **QR Code Regeneration** - Regenerate QR codes anytime
-
-#### Damage Assessment
-- **Good Condition** → Serial returns to available ($0 fee)
-- **Minor Damage** → Serial marked as damaged ($100 default fee)
-- **Damaged** → Serial sent to repair ($500 default fee)
-- **Lost** → Serial disposed (full equipment value fee)
+### Mobile QR Scanning *(in progress)*
+The web-based scanner is under active development and not yet functional end-to-end.
 
 ## ⚙️ Configuration
 
-### Settings
 Navigate to: **Rental → Configuration → Settings**
 
-#### Late Fee Settings
-- Enable/disable late fees by default
-- Set daily rate (e.g., $50/day)
-- Set percentage (e.g., 5% of rental amount per day)
-- Choose calculation method (daily rate, percentage, or maximum of both)
-
-#### Serial Number Settings
-- Enable auto-generation
-- Set serial number prefix (default: "SN")
-- Format: `{PREFIX}-{EQUIPMENT_CODE}-{NUMBER}` (e.g., SN-EQ-0001)
-
-#### Project Settings
-- Default rental duration (days)
-- Require signature for pickup/return
-- Require photos for pickup/return
-
-#### Damage Classification
-- Minor damage threshold (default: $100)
-- Moderate damage threshold (default: $500)
-- Severe damage: anything above moderate threshold
+- **Late Fees** - Enable by default, set daily rate and/or percentage, choose calculation method
+- **Serial Numbers** - Enable auto-generation, format is `{EQUIPMENT_CODE}-{NUMBER}` (e.g., `EQ-0001`)
+- **Reminders & Overdue** - Send reminder emails before due date, send overdue notifications
+- **Invoicing** - Auto-create invoice on return, optionally include late fees
+- **Stock Warnings** - Low-stock threshold alerts
+- **Damage Classification** - Minor/moderate fee thresholds; anything above moderate is treated as severe
+- **QR Branding** - Upload a company logo to overlay on generated QR codes
 
 ## 🗂️ Module Structure
 ```
-rental_management/
+otk_rental_management/
+├── controllers/
+│   └── main.py                          # Public REST API (API-key auth)
 ├── models/
-│   ├── rental_equipment.py          # Equipment/items
-│   ├── rental_equipment_category.py # Categories
-│   ├── rental_equipment_serial.py   # Serial numbers + QR
-│   ├── rental_project.py            # Projects/bookings
-│   ├── rental_project_item.py       # Line items
-│   ├── rental_project_item_status.py# Status history
-│   ├── qr_generator.py              # QR code generation
-│   └── res_config_settings.py       # Configuration
+│   ├── otk_rental_equipment.py          # Equipment/items
+│   ├── otk_rental_equipment_category.py # Categories
+│   ├── otk_rental_equipment_serial.py   # Serial numbers + QR generation
+│   ├── otk_rental_project.py            # Projects/bookings
+│   ├── otk_rental_project_item.py       # Line items
+│   ├── otk_rental_project_item_status.py# Status/damage history
+│   ├── otk_rental_project_signature.py  # Digital signatures
+│   ├── otk_rental_scan_log.py           # QR scan audit log
+│   ├── qr_generator.py                  # QR code image generation
+│   ├── company_qr_extension.py          # Company logo overlay
+│   ├── serial_qr_model.py               # QR mixin helpers
+│   └── res_config_settings.py           # Configuration
 ├── views/
-│   ├── rental_equipment_views.xml
-│   ├── rental_equipment_serial_views.xml
-│   ├── rental_project_views.xml
-│   └── rental_menus.xml
+│   ├── otk_rental_equipment_views.xml
+│   ├── otk_rental_equipment_category_views.xml
+│   ├── otk_rental_equipment_serial_views.xml
+│   ├── otk_rental_project_views.xml
+│   ├── otk_rental_project_item_views.xml
+│   ├── otk_rental_project_signature_views.xml
+│   ├── qr_scanner_views.xml             # Mobile web scanner
+│   ├── res_config_settings_views.xml
+│   └── otk_rental_menus.xml
 ├── wizards/
-│   ├── rental_return_wizard.py      # Return assessment
-│   ├── bulk_serial_wizard.py        # Bulk serial generation
-│   ├── serial_selection_wizard.py   # Manual serial selection
-│   └── serial_delete_confirm_wizard.py
+│   ├── otk_rental_return_wizard.py      # Full return assessment
+│   ├── otk_rental_pickup_wizard.py      # Partial pickup
+│   ├── otk_rental_partial_return_wizard.py
+│   ├── bulk_serial_wizard.py            # Bulk serial generation
+│   ├── serial_selection_wizard.py       # Manual serial selection
+│   ├── serial_delete_confirm_wizard.py
+│   └── add_signature_wizard.py
 ├── reports/
-│   └── qr_label_reports.xml         # QR label printing
+│   └── qr_label_report.xml              # QR label printing
 ├── security/
-│   ├── rental_security.xml          # Access groups
-│   └── ir.model.access.csv          # Access rights
+│   ├── otk_rental_security.xml          # Access groups
+│   └── ir.model.access.csv              # Access rights
 ├── data/
-│   ├── rental_sequence.xml          # Auto-numbering
-│   └── rental_data.xml              # Default data
+│   ├── otk_rental_sequence.xml          # Auto-numbering
+│   └── otk_rental_data.xml              # Default data
 └── static/
+    ├── lib/jsQR/                        # Camera QR decoding
     └── description/
-        ├── icon.png
-        └── index.html
 ```
 
 ## 🔐 Security
 
 ### User Groups
-- **Rental User** - Create/edit projects, view equipment
-- **Rental Manager** - Full access, delete permissions, settings
+- **Rental User** (`group_otk_rental_user`) - Create/edit projects, view equipment
+- **Rental Manager** (`group_otk_rental_manager`) - Full access, delete permissions, settings
 
 ### Multi-Company Support
-- Equipment and projects respect company boundaries
-- Works seamlessly in multi-company Odoo installations
+Equipment and projects respect company boundaries and work in multi-company installations.
 
 ## 🛠️ Technical Details
 
 ### Dependencies
 - **Odoo Modules**: base, web, sale_management, stock, account, contacts
 - **Python Libraries**: qrcode, Pillow (PIL)
+- **JavaScript**: jsQR (bundled)
 
 ### Database Models
-- `rental.equipment` - Equipment master data
-- `rental.equipment.category` - Categories
-- `rental.equipment.serial` - Serial numbers with QR codes
-- `rental.project` - Rental projects/bookings
-- `rental.project.item` - Project line items
-- `rental.project.item.status` - Status history
-
-### Key Technologies
-- **QR Generation**: qrcode library with PIL for image processing
-- **Odoo 18 Features**: List views, chatter, activities, kanban boards
-- **Mail Integration**: Activity tracking, followers, messages
+- `otk.rental.equipment` - Equipment master data
+- `otk.rental.equipment.category` - Categories
+- `otk.rental.equipment.serial` - Serial numbers with QR codes
+- `otk.rental.project` - Rental projects/bookings
+- `otk.rental.project.item` - Project line items
+- `otk.rental.project.item.status` - Status/damage history
+- `otk.rental.project.signature` - Captured signatures
+- `otk.rental.scan.log` - QR scan audit log
 
 ## 📊 Use Cases
 
-### Perfect For:
-- 🎬 **Equipment Rental Companies** - Cameras, lighting, sound equipment
-- 🏗️ **Construction Equipment** - Tools, machinery, scaffolding
-- 💻 **IT Equipment Rental** - Laptops, servers, networking gear
-- 🚗 **Vehicle Rental** - Cars, trucks, specialized vehicles
-- 🎪 **Event Equipment** - Furniture, decorations, AV equipment
-- 🏥 **Medical Equipment** - Hospital equipment, mobility aids
-- 🎓 **Educational Institutions** - Lab equipment, projectors, tablets
+Equipment rental companies (cameras, lighting, sound), construction equipment, IT equipment, vehicle rental, event equipment, medical equipment, and educational institutions lending lab/AV equipment.
 
-## 🐛 Known Issues & Limitations
+## 🐛 Known Issues
 
-- QR scanning feature requires HTTPS for camera access
-- Mobile QR scanner not yet implemented (planned for v2.0)
-- Batch operations limited to 1000 items at once
-
-## 🗺️ Roadmap
-
-### Version 2.0 (Planned)
-- [ ] Mobile QR scanner with camera integration
-- [ ] Barcode support alongside QR codes
-- [ ] Advanced reporting and analytics dashboard
-- [ ] Customer portal for self-service booking
-- [ ] Maintenance scheduling integration
-- [ ] API endpoints for third-party integrations
-- [ ] WhatsApp/SMS notifications
-
-### Version 2.1 (Future)
-- [ ] Multi-warehouse support
-- [ ] Delivery/pickup logistics integration
-- [ ] Contracts and agreements management
-- [ ] Subscription-based rentals
+- **Mobile web QR scanner is not yet functional** - views and JS scaffolding exist but the feature is incomplete; do not advertise this as working until finished.
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
-
+Contributions are welcome via Pull Request:
 1. Fork the repository
 2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
 3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
@@ -286,18 +216,7 @@ This project is licensed under the LGPL-3 License - see the [LICENSE](LICENSE) f
 
 **Ömer Kadir | Ömer Teknoloji**
 - Website: [omertek.com](https://omertek.com)
-
-## 🙏 Acknowledgments
-
-- Odoo Community for the amazing framework
-- Contributors and testers who helped improve this module
-
-## 📧 Support
-
-For support, please:
-1. Check the [Issues](https://github.com/abgrxenda/rental_management/issues) page
-2. Create a new issue with detailed information
-3. Contact: [odoo@otek.today]
+- Support: support@omertek.com
 
 ---
 
